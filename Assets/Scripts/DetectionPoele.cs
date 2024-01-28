@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Detection : MonoBehaviour
+public class DetectionPoele : MonoBehaviour
 {
     [Header("need GameObject with rigidbody and collider")]
     [SerializeField] public GameObject ObjetADetecter;
@@ -24,7 +24,7 @@ public class Detection : MonoBehaviour
         if (ObjetADetecter == TriggeredObject.gameObject)
         {
            /* Debug.Log(TriggeredObject.gameObject.name);*/
-            Debug.Log("La brosse a dents est a sa place!");
+            Debug.Log("La poele est a sa place!");
         }
     }
 }
