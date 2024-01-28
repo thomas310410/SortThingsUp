@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class S_RotatorCam : MonoBehaviour
 {
+    public SceneOrientation currentSceneOrientation = SceneOrientation.Sud;
     [SerializeField]private Transform cameraTransform;
     [SerializeField] private Transform target; // Le point de pivot (le centre de la chambre)
     [SerializeField] private float distanceFromTarget = 2.0f; // Distance de la caméra par rapport au point de pivot
@@ -19,7 +20,8 @@ public class S_RotatorCam : MonoBehaviour
     private Quaternion targetRotation;
     private bool isTransitioning = false;
     [SerializeField] private float transitionSpeed = 3.0f; // Vitesse de la transition
-
+    public enum SceneOrientation { Sud, Est, Nord, Ouest };
+    public SceneOrientation CurrentsceneOrientation;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +50,7 @@ public class S_RotatorCam : MonoBehaviour
         {
             startTouchPosition = Input.mousePosition;
             isSwiping = true;
+
         }
 
         if (isSwiping && Input.GetMouseButton(0))
@@ -58,10 +61,15 @@ public class S_RotatorCam : MonoBehaviour
             if (Mathf.Abs(distance.x) > swipeThreshold)
             {
                 if (distance.x > 0)
+                {
                     SwitchView(-1); // Swipe right
+                    TurnSceneCounterclockwise();    
+                }
                 else
+                {
                     SwitchView(1); // Swipe left
-
+                    TurnSceneClockwise();   
+                }
                 isSwiping = false;
                 isTransitioning = true; // Commencer la transition
             }
@@ -92,5 +100,25 @@ public class S_RotatorCam : MonoBehaviour
         Vector3 offset = Quaternion.Euler(isoAngleX, currentViewIndex * 90 + isoAngleY, 0) * new Vector3(0, 0, -distanceFromTarget);
         targetPosition = target.position + offset;
         targetRotation = Quaternion.LookRotation(target.position - targetPosition);
+    }
+    public void TurnSceneClockwise()
+    {
+        int currentOrientationIndex = (int)currentSceneOrientation;
+        int nextOrientationIndex = (currentOrientationIndex + 1) % System.Enum.GetValues(typeof(SceneOrientation)).Length;
+
+        currentSceneOrientation = (SceneOrientation)nextOrientationIndex;
+
+        Debug.Log("Current Scene Orientation: " + currentSceneOrientation);
+
+    }
+    public void TurnSceneCounterclockwise()
+    {
+        int currentOrientationIndex = (int)currentSceneOrientation;
+        int totalOrientations = System.Enum.GetValues(typeof(SceneOrientation)).Length;
+        int nextOrientationIndex = (currentOrientationIndex - 1 + totalOrientations) % totalOrientations;
+
+        currentSceneOrientation = (SceneOrientation)nextOrientationIndex;
+
+        Debug.Log("Current Scene Orientation: " + currentSceneOrientation);
     }
 }
