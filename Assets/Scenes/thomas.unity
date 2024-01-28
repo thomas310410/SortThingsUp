@@ -411,6 +411,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 978992927}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 09772ad0707b26047a7ea0a2bb19e86f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 978992928}
   m_SourcePrefab: {fileID: 100100000, guid: 09772ad0707b26047a7ea0a2bb19e86f, type: 3}
 --- !u!1 &978992922 stripped
 GameObject:
@@ -451,6 +455,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.40000004, y: 0.20000006, z: 0.2576224}
   m_Center: {x: 0, y: 0, z: 0.1288112}
+--- !u!114 &978992928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978992922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f40b50c3213c4c14197316719464687e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &990711344
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,7 +836,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bf1a91d3342645458f1d55bb686ffed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 500000000
+  Self: {fileID: 1911254933}
+  speed: 5
 --- !u!1 &2097957688
 GameObject:
   m_ObjectHideFlags: 0
