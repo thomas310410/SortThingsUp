@@ -24,7 +24,7 @@ public class Detection : MonoBehaviour
         if (ObjetADetecter == TriggeredObject.gameObject)
         {
            /* Debug.Log(TriggeredObject.gameObject.name);*/
-            Debug.Log("La brosse a dents est a sa place!");
+            Debug.Log("L'objet "+ TriggeredObject.gameObject.name + " est a sa place!");
         }
     }
 }
