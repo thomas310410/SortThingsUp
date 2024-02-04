@@ -18,7 +18,7 @@ public class GAME_MANAGER : MonoBehaviour
         if (GUI.Button(new Rect(10, 10, 150, 50), "Comfirm Placement"))
             ConfirmPlacement();
 
-        if (GUI.Button(new Rect(10, 10, 150, 50), "Enter"))
+        if (GUI.Button(new Rect(10, 70, 150, 50), "Enter Placement Mode"))
             EnterPlacementMode();
 
     }
